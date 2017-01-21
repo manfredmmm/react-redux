@@ -5,7 +5,6 @@ import appReducer from './app.reducer';
 
 const initialState = {
   title: 'Arnau <3 David',
-  number: 3,
   list: []
 };
 

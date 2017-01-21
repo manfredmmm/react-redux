@@ -1,17 +1,27 @@
 import axios from 'axios';
 import { FETCH_CATS, VOTE_CAT } from './list.reducer';
 
-const API_URL = 'http://192.168.1.130:3000';
+const API_URL = 'http://localhost:3000';
 
 export const onVoteCat = cat => (dispatch) => {
   axios
     .post(`${API_URL}/cats/${cat.id}/votes`)
-    .then(({ data }) => {
-      dispatch({
-        type: VOTE_CAT,
-        cat: data
-      });
-    });
+    .then(
+      ({ data }) => {
+        dispatch({
+          type: VOTE_CAT,
+          cat: data
+        });
+      },
+      (error) => {
+        console.log(error);
+        dispatch({
+          type: VOTE_CAT,
+          cat
+        });
+      }
+    );
+
   dispatch({
     type: VOTE_CAT,
     cat: {

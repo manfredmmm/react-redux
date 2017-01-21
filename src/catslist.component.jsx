@@ -35,7 +35,7 @@ class CatsListComponent extends Component {
 CatsListComponent.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       age: PropTypes.number.isRequired,
       votes: PropTypes.number.isRequired
