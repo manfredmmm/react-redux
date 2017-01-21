@@ -12,6 +12,13 @@ export const onVoteCat = cat => (dispatch) => {
         cat: data
       });
     });
+  dispatch({
+    type: VOTE_CAT,
+    cat: {
+      ...cat,
+      votes: cat.votes + 1
+    }
+  });
 };
 
 export const fetchCats = () => (dispatch) => {
