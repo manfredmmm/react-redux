@@ -1,29 +1,23 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 import appReducer from './app.reducer';
 
 const initialState = {
   title: 'Arnau <3 David',
   number: 3,
-  list: [
-    {
-      id: 0,
-      name: 'Mixi',
-      age: 10,
-      votes: 10
-    }, {
-      id: 1,
-      name: 'Grisa',
-      age: 3,
-      votes: 6
-    }, {
-      id: 2,
-      name: 'Blanca',
-      age: 8,
-      votes: 7
-    }
-  ]
+  list: []
 };
 
-const store = createStore(appReducer, initialState);
+const middlewares = [
+  createLogger(),
+  thunk
+];
+
+const store = createStore(
+  appReducer,
+  initialState,
+  applyMiddleware(...middlewares)
+);
 
 export default store;

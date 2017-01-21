@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { bindActionsCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 import * as actions from './list.actions';
 
 class CatsListComponent extends Component {
+  componentDidMount() {
+    this.props.fetchCats();
+  }
   render() {
     return (
       <ul>
@@ -17,8 +20,8 @@ class CatsListComponent extends Component {
     const { list } = this.props;
     return list.map(cat =>
       (<li key={cat.id}>
-        <span>{cat.name} {cat.age}</span>
-        <span> --- {cat.votes}</span>
+        <span>Name: {cat.name},  Age: {cat.age}</span>
+        <span> --- Votes: {cat.votes}</span>
         <button onClick={() => this._voteCat(cat)}>Vote</button>
       </li>));
   }
@@ -38,13 +41,15 @@ CatsListComponent.propTypes = {
       votes: PropTypes.number.isRequired
     })
   ).isRequired,
-  onVoteCat: PropTypes.func.isRequired
+  onVoteCat: PropTypes.func.isRequired,
+  fetchCats: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ list }) => ({ list });
 
-const mapDispatchToProps = dispatch => bindActionsCreators({
-  onVoteCat: actions.onVoteCat
+const mapDispatchToProps = dispatch => bindActionCreators({
+  onVoteCat: actions.onVoteCat,
+  fetchCats: actions.fetchCats
 }, dispatch);
 
 export default connect(
