@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "awesomeTypescriptLoaderOptions": {
+        /* ... */
+    }
+}
