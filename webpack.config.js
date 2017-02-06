@@ -14,6 +14,7 @@ module.exports = (env) => {
     module: {
       loaders: [
         { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader', 'eslint-loader'] },
+        { test: /\.css$/, loaders: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'postcss-loader'] },
       ]
     }
   });

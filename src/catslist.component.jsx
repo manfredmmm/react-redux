@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actions from './list.actions';
+import styles from './cats_list.css';
 
 class CatsListComponent extends Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class CatsListComponent extends Component {
   }
   render() {
     return (
-      <ul>
+      <ul className={styles.list}>
         { this._renderListItems() }
       </ul>
     );
@@ -19,7 +20,7 @@ class CatsListComponent extends Component {
   _renderListItems() {
     const { list } = this.props;
     return list.map(cat =>
-      (<li key={cat.id}>
+      (<li key={cat.id} className={styles.listItem}>
         <span>Name: {cat.name},  Age: {cat.age}</span>
         <span> --- Votes: {cat.votes}</span>
         <button onClick={() => this._voteCat(cat)}>Vote</button>

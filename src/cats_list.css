@@ -1,0 +1,23 @@
+.list {
+  list-style: none;
+  margin: 10px 0 0 20px;
+}
+.greyBackground {
+  background-color: grey;
+}
+.alignCenter {
+  text-align: center;
+}
+.listItem {
+  padding: 3px 5px;
+  composes: greyBackground alignCenter;
+}
+.listItem:not(:first-child) {
+  margin-top: 10px;
+}
+.listItem:nth-child(odd) {
+  color: white;
+}
+.listItem:nth-child(even) {
+  color: black;
+}
